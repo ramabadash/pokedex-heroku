@@ -13,6 +13,9 @@ const P = new Pokedex();
 router.get("/", (req, res)=> {
     const userName = req.headers.username; //get user name
     const usreFolderPath = path.resolve(`..\\users`, userName); //path to th user file
+    if(!fs.existsSync(usreFolderPath)) {
+        fs.mkdirSync(`${usreFolderPath}`); //Create new folder for the user
+    }
     const pokemonCollection = [];
     const collection = fs.readdirSync(usreFolderPath); //collection files from user folder
     for (const pokemonFile of collection) {
@@ -71,6 +74,9 @@ router.put("/catch/:id", (req, res)=> {
     const id = req.params.id;
     const userName = req.headers.username;
     const usreFolderPath = path.resolve(`..\\users`, userName);
+    if(!fs.existsSync(usreFolderPath)) {
+        fs.mkdirSync(`${usreFolderPath}`); //Create new folder for the user
+    }
     if(fs.existsSync(usreFolderPath)) {
         const collection = fs.readdirSync(usreFolderPath); //all pokemon collection files
         if (collection.includes(`${id}.json`)){ //Pokemon already caught
@@ -86,6 +92,9 @@ router.delete("/release/:id", (req, res)=> {
     const id = req.params.id;
     const userName = req.headers.username;
     const usreFolderPath = path.resolve(`..\\users`, userName);
+    if(!fs.existsSync(usreFolderPath)) {
+        fs.mkdirSync(`${usreFolderPath}`); //Create new folder for the user
+    }
     if(fs.existsSync(usreFolderPath)) {
         const collection = fs.readdirSync(usreFolderPath);
         if (collection.includes(`${id}.json`)){
