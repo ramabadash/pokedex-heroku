@@ -6,7 +6,7 @@ function userHandler (req, res, next) {
     // if(!userName) {
     //     throw {"status": 401, "messege": "pokemon requests missing the username header"};
     // }
-    const usreFolderPath = path.resolve(`.\\users`, userName);
+    const usreFolderPath = path.resolve(`..\\users`, userName);
     if(!fs.existsSync(usreFolderPath)) {
         fs.mkdirSync(`${usreFolderPath}`); //Create new folder for the user
     }
