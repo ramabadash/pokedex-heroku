@@ -23,7 +23,7 @@ app.get('/', function(req, res) { // serve main path as static file
   res.sendFile(path.resolve('./dist/index.html'))
 });
 
-// app.use(userHandler);
+app.use(userHandler);
 
 app.use('/pokemon', pokemonRouter);
 app.use('/info', userRouter);
