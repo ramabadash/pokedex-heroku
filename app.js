@@ -28,7 +28,7 @@ app.use(userHandler);
 app.use('/pokemon', pokemonRouter);
 app.use('/info', userRouter);
 
-app.use(errorHandlerMiddleware);
+// app.use(errorHandlerMiddleware);
 
 
 app.listen(process.env.PORT || port, () => {
